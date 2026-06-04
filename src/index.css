@@ -106,16 +106,3 @@ a {
 }
 
 /* Accessibility: if video is large, consider providing a skip or pause control for keyboard users */
-#demo-section{
-  margin: 2rem;
-}
-
-#demo{
-  margin-bottom: 1rem;
-}
-
-.demo-paragraph{
-  font-size: 1.1rem;
-  line-height: 1.4;
-  text-align: justify;
-}
