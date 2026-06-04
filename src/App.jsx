@@ -1,6 +1,7 @@
 import React from "react";
 import VideoContainer from "./components/VideoContainer";
 import Paragraph from "./components/Paragraph";
+import ImgDescription from "./components/ImgDescription";
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
 	  
 	  <VideoContainer />
 	  <Paragraph />
+	  <hr />
+	  <ImgDescription />
     </>
   );
 }

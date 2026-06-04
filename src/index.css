@@ -106,16 +106,50 @@ a {
 }
 
 /* Accessibility: if video is large, consider providing a skip or pause control for keyboard users */
-#demo-section{
-  margin: 2rem;
+#demo-section,
+#features {
+	margin: 2rem;
 }
 
-#demo{
-  margin-bottom: 1rem;
+#demo,
+#feature-heading {
+	margin-bottom: 1rem;
 }
 
-.demo-paragraph{
-  font-size: 1.1rem;
-  line-height: 1.4;
-  text-align: justify;
+.demo-paragraph {
+	font-size: 1.1rem;
+	line-height: 1.4;
+	text-align: justify;
+}
+
+.features {
+	display: flex;
+	justify-content: start;
+}
+
+.features-list {
+	width: 50%;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border: 1px solid black;
+	font-size: 2rem;
+	gap: 24px;
+}
+
+.features-list ul li {
+	border: 1px solid black;
+}
+
+.feature-image {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	width: 50%;
+}
+
+.img {
+	width: 300px;
+	height: 300px;
 }
