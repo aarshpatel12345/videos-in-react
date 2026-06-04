@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import heroVideo from "../assets/hero.mkv";
+import Navbar from "./Navbar";
 
 function VideoContainer() {
 	const videoRef = useRef(null);
@@ -29,8 +30,9 @@ function VideoContainer() {
 	return (
 		<>
 			{/* HERO SECTION: made this section act as a fullscreen hero */}
-			<section className="hero">
-				<h1 id="video">Video Container</h1>
+            <Navbar />
+			<section className="hero" id="hero">
+				{/* <h1 id="video">Video Container</h1> */}
 
 				{/*
 					Use <video> attributes that improve autoplay behavior and performance:
