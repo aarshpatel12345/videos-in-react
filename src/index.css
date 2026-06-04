@@ -1,0 +1,56 @@
+* {
+	font-family: "Inter", sans-serif;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	padding-top: 12px;
+}
+
+header ul {
+	background: transparent;
+	backdrop-filter: blur(50px);
+	border-radius: 50px;
+	display: flex;
+	list-style: none;
+	justify-content: center;
+	gap: 24px;
+	margin: 12px auto;
+	padding: 12px;
+	width: fit-content;
+	border: 1px solid black;
+}
+
+/* Hero section styles: make the video fill the viewport */
+.hero {
+	position: relative;
+	width: 100%;
+	height: 100vh; /* full viewport height */
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Video should cover the hero area and remain responsive */
+.hero__video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	transform: translate(-50%, -50%);
+	object-fit: cover; /* crop to cover while preserving aspect ratio */
+	z-index: 0;
+}
+
+/* Overlay content sits above video */
+.hero__content {
+	position: relative;
+	z-index: 1;
+	color: white;
+	text-align: center;
+	padding: 16px;
+	-webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.6);
+}
