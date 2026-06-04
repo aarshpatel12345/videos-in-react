@@ -1,49 +1,57 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import heroVideo from "../assets/hero.mkv";
 
 function VideoContainer() {
 	const videoRef = useRef(null);
 
 	useEffect(() => {
-		// Attempt to play programmatically on mount. Many browsers allow
-		// autoplay when the video is muted, so we set muted in the markup
-		// and try to play here to improve reliability.
+		// Ensure the video element is muted (required for autoplay in most browsers)
+		// and try to play it programmatically. Wrap in try/catch because some
+		// browsers may still block autoplay in restrictive modes.
 		const v = videoRef.current;
-		if (v) {
-			const p = v.play();
-			if (p !== undefined) {
-				p.catch(() => {
-					// If autoplay is blocked, ensure muted and try again.
-					v.muted = true;
-					v.play().catch(() => {});
-				});
-			}
+		if (!v) return;
+
+		v.muted = true; // required for autoplay on many platforms
+		v.playsInline = true; // for iOS Safari to allow inline playback
+
+		const playPromise = v.play();
+		if (playPromise !== undefined) {
+			playPromise.catch((err) => {
+				// If autoplay is blocked, keep the video muted and leave it paused.
+				// In production you might show a play button overlay here.
+				// Console here for debugging during development.
+				// eslint-disable-next-line no-console
+				console.warn("Video autoplay failed:", err);
+			});
 		}
 	}, []);
 
 	return (
 		<>
-			{/* Hero section: fills the viewport and contains the background video */}
-			<section className="hero" aria-label="Hero section">
-				{/* Video: muted + playsInline + autoplay + loop for optimized autoplay */}
+			{/* HERO SECTION: made this section act as a fullscreen hero */}
+			<section className="hero">
+				<h1 id="video">Video Container</h1>
+
+				{/*
+					Use <video> attributes that improve autoplay behavior and performance:
+					- muted: required for autoplay in many browsers
+					- autoPlay: hint to start playing as soon as possible
+					- loop: common for hero background videos
+					- playsInline: avoids forcing fullscreen on iOS Safari
+					- preload="auto": browser can preload metadata/first frames (adjust if large)
+					We use a ref to call play() programmatically after ensuring muted.
+				*/}
 				<video
 					ref={videoRef}
-					className="hero__video"
+					className="heroVideo"
 					src={heroVideo}
-					muted
-					playsInline
 					autoPlay
+					muted
 					loop
+					playsInline
 					preload="auto"
-				>
-					{/* Fallback message for browsers that don't support the format */}
-					Your browser does not support the video tag.
-				</video>
-
-				{/* Content overlay on top of the video */}
-				<div className="hero__content">
-					<h1 id="video">Video Container</h1>
-				</div>
+					aria-hidden="true"
+				/>
 			</section>
 		</>
 	);
