@@ -1,8 +1,8 @@
 * {
 	font-family: "Inter", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 header {
@@ -30,7 +30,7 @@ header ul {
 
 a {
 	text-decoration: none;
-  color: inherit;
+	color: inherit;
 }
 
 /* HERO video styles: make the section full-viewport and the video cover it */
@@ -55,6 +55,46 @@ a {
 	z-index: 0;
 	will-change: transform, opacity; /* hint to browser for smoother rendering */
 	pointer-events: none; /* allow clicks through to overlays */
+}
+
+.muteToggle {
+	position: absolute;
+	right: 24px;
+	bottom: 24px;
+	width: 56px;
+	height: 56px;
+	border: 1px solid rgba(255, 255, 255, 0.28);
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.16);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+	display: grid;
+	place-items: center;
+	z-index: 2;
+	color: #fff;
+	cursor: pointer;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+	transition:
+		transform 0.2s ease,
+		background 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.muteToggle:hover {
+	transform: scale(1.06);
+	background: rgba(255, 255, 255, 0.24);
+	border-color: rgba(255, 255, 255, 0.45);
+}
+
+.muteToggle:focus-visible {
+	outline: 2px solid rgba(255, 255, 255, 0.9);
+	outline-offset: 3px;
+}
+
+.muteToggle svg {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
 }
 
 /* Overlay content (like the heading) sits above the video */
